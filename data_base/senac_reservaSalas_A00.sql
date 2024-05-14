@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS informacoes_curso (
     sigla_curso VARCHAR(15) NOT NULL, 
     codigo_turma VARCHAR(50) NOT NULL, 
     oferta VARCHAR(50) NOT NULL, 
-    periodo VARCHAR(20) NOT NULL,
+    periodo ENUM('manha', 'Tarde', 'Noite')  NOT NULL,
     cor VARCHAR(20) NOT NULL,
     sub_area_id INT,
     docente_id INT,
@@ -43,7 +43,7 @@ capacidade VARCHAR(20) NOT NULL
 
 --criando a tabela reserva
 CREATE TABLE IF NOT EXISTS reserva(
-data_incial DATETIME DEFAULT CURRENT_TIMESTAMP,
+data_incial DATETIME NOT NULL,
 data_final DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 hora_inicio TIME NOT NULL,
 hora_finaliza TIME NOT NULL,
