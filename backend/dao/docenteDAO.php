@@ -1,6 +1,7 @@
 <?php
-require_once 'config/database.php';
-require_once 'entity/docente.php';
+
+require_once 'backend/config/database.php';
+require_once 'backend/entity/docente.php';
 require_once 'baseDAO.php';
 
 class docenteDAO implements baseDAO {
@@ -12,8 +13,9 @@ class docenteDAO implements baseDAO {
     }
 
     public function create ($docente){
+        
         try{
-            $sql = "INSERT INTO docente(nome, email) 
+            $sql = "INSERT INTO docente(nome_docente, email) 
             VALUES (:nome, :email)";
 
             $stmt = $this->db->prepare($sql);

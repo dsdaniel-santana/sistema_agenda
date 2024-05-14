@@ -17,7 +17,8 @@
 
     <div class="col-md-6">
         <h2>Cadastrar Docente</h2>
-        <form action="authservice.php" method="post">
+        <form action="./authservice.php" method="post">
+        <input type="hidden" name="type" value="register">
             <div class="mb-3">
                 <label for="new_nome">Nome</label>
                 <input type="text" class="form-control" id="new_nome" name="new_nome" required>
