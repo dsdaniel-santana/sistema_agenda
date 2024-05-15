@@ -1,25 +1,25 @@
---Criando o banco de dados
+-- Criando o banco de dados
 CREATE DATABASE IF NOT EXISTS senac_reservaSalas;
 
---informando que trabalhar no banco de dados banco de dados
+-- informando que trabalhar no banco de dados banco de dados
 USE senac_reservaSalas;
 
 
---criando a tabela sub_area
+-- criando a tabela sub_area
 CREATE TABLE IF NOT EXISTS sub_area(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nome_sub_area VARCHAR(150) NOT NULL,
 	cor VARCHAR(50) NOT NULL
 );
 
---criando a tabela sala
+-- criando a tabela sala
 CREATE TABLE IF NOT EXISTS docente(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	nome_docente VARCHAR(50) NOT NULL
+	nome_docente VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL
 );
 
---criando a tabela sala
+-- criando a tabela sala
 CREATE TABLE IF NOT EXISTS informacoes_curso (
 	id_curso INT AUTO_INCREMENT PRIMARY KEY,
     nome_curso VARCHAR(150) NOT NULL, 
@@ -27,21 +27,20 @@ CREATE TABLE IF NOT EXISTS informacoes_curso (
     codigo_turma VARCHAR(50) NOT NULL, 
     oferta VARCHAR(50) NOT NULL, 
     periodo ENUM('manha', 'Tarde', 'Noite')  NOT NULL,
-    cor VARCHAR(20) NOT NULL,
     sub_area_id INT,
     docente_id INT,
     CONSTRAINT fk_sub_area FOREIGN KEY (sub_area_id) REFERENCES sub_area(id),
     CONSTRAINT fk_docente FOREIGN KEY (docente_id) REFERENCES docente(id)
 );
 
---criando a tabela sala
+-- criando a tabela sala
 CREATE TABLE IF NOT EXISTS sala(
 id_sala INT AUTO_INCREMENT PRIMARY KEY,
 sala_lab VARCHAR(50) NOT NULL, 
 capacidade VARCHAR(20) NOT NULL
 );
 
---criando a tabela reserva
+-- criando a tabela reserva
 CREATE TABLE IF NOT EXISTS reserva(
 id INT AUTO_INCREMENT PRIMARY KEY,
 data_incial DATETIME NOT NULL,
