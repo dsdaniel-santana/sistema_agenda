@@ -9,6 +9,57 @@ class reservaDAO implements BaseDAO {
   public function __construct(){
     $this->db = database::getInstance();
   }
+
+  public function getById($id){
+    try {
+      $sql = "SELECT *FROM reserva WHERE Id= :id";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if($result){
+        return new reserva(
+          $result['id'],
+          $result['data_incial'],
+          $result['data_final'],
+          $result['hora_inicio'],
+          $result['hora_finaliza'],
+          $result['curso_id'],
+          $result['sala_id']
+        );
+      }
+      return null;
+    }catch (PDOException $e){
+      return null;
+    }
+  }
+
+  public function getAll(){
+    try {
+      $sql = "SELECT *FROM reserva WHERE";
+      $stmt = $this->db->prepare($sql);
+      $grupos = [];
+
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $grupos = new reserva( 
+              null,
+              $row['data_incial'],
+              $row['data_final'],
+              $row['hora_inicio'],
+              $row['hora_finaliza'],
+              $row['curso_id'],
+              $row['sala_id']
+            );
+      }
+
+      return $grupos;
+    }catch (PDOException $e){
+      return [];
+    }
+  }
+
+
   public function create($reserva) {
     try {
       $sql = "INSERT INTO reserva (data_incial, data_final, hora_inicio, hora_finaliza, curso_id, sala_id) 
