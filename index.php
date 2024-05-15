@@ -14,7 +14,7 @@
             <li><a href="#">Sub-Area</a></li>
             <li><a href="#">Curso</a></li>
             <li><a href="#">Sala</a></li>
-            <li><a href="#">Reserva Salas</a></li>
+            <li><a href="cadastrar_reserva.php">Reserva Salas</a></li>
         </ul>
     </div>
 
