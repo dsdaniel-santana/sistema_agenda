@@ -36,28 +36,58 @@ class reservaDAO implements BaseDAO {
   }
 
   public function getAll(){
-    try {
-      $sql = "SELECT *FROM reserva WHERE";
-      $stmt = $this->db->prepare($sql);
-      $grupos = [];
+    try{
+        $sql = "SELECT * FROM reserva"; 
 
-      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $grupos = new reserva( 
-              null,
-              $row['data_incial'],
-              $row['data_final'],
-              $row['hora_inicio'],
-              $row['hora_finaliza'],
-              $row['curso_id'],
-              $row['sala_id']
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "<pre>";
+        print_r($reservas);
+        echo "</pre>";
+
+        return array_map(function ($reserva) {
+            return new reserva(
+                null,
+                $reserva['data_incial'], 
+                $reserva['data_final'],
+                $reserva['hora_inicio'],
+                $reserva['hora_finaliza'],
+                $reserva['curso_id'],
+                $reserva['sala_id']
             );
-      }
-
-      return $grupos;
-    }catch (PDOException $e){
-      return [];
+        }, $reservas); 
+    } catch (PDOException $e) {
+        return [ ];
     }
-  }
+}
+
+  // public function getAll(){
+  //   try {
+  //     $sql = "SELECT *FROM reserva";
+  //     $stmt = $this->db->prepare($sql);
+  //     $grupos = [];
+
+  //     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+  //           $grupos = new reserva( 
+  //             null,
+  //             $row['data_incial'],
+  //             $row['data_final'],
+  //             $row['hora_inicio'],
+  //             $row['hora_finaliza'],
+  //             $row['curso_id'],
+  //             $row['sala_id']
+  //           );
+  //     }
+
+  //     return $grupos;
+  //   }catch (PDOException $e){
+  //     return [];
+  //   }
+  // }
 
 
   public function create($reserva) {

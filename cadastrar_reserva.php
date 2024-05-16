@@ -17,7 +17,7 @@
 
     <div class="col-md-6">
         <h2>Cadastrar Reserva</h2>
-        <form action="./authservice.php" method="post">
+        <form action="./reservaservice.php" method="post">
         <input type="hidden" name="type" value="register">
             <div class="mb-3">
                 <label for="new_data_incial">Data Inicial</label>
@@ -55,6 +55,8 @@
         </form>
     </div>
 
+
+    
 </body>
 
 </html>

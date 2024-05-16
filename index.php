@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda das Salas - Senac Tito </title>
 </head>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
+    $date_input = $_POST['date'];
+    $date = date_create($date_input);
+    if ($date) {
+        echo date_format($date, "Y/m/d");
+    } else {
+        echo "Formato inválido";
+    }
+}
+?>
+
 <body>
 
     <div>
@@ -21,7 +33,7 @@
     <div>
         <h1>Listar</h1>
         <ul>
-            <li><a href="#">Salas Reservadas</a></li>
+            <li><a href="consultar_reserva.php?action=listar">Salas Reservadas</a></li>
             <li><a href="#">Salas Disponiveis</a></li>
             <li><a href="#">Lista Peridos</a></li>
             
