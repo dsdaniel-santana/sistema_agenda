@@ -45,32 +45,38 @@ if (isset($_GET['id'])) {
             <div class="mb-3">
                 <label for="new_data_incial">Data Inicial</label>
                 <!-- <input type="date" class="form-control" id="new_data_incial" name="new_data_incial" > -->
-                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($reserva->getDataIncial(), ENT_QUOTES, 'UTF-8'); ?>">
+                <input type="date" id="new_data_incial" name="new_data_incial" value="<?php echo htmlspecialchars($reserva->getDataIncial(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
             <div class="mb-3">
                 <label for="new_data_final">Data Final</label>
-                <input type="date" class="form-control" id="new_data_final" name="new_data_final" >
+                <!-- <input type="date" class="form-control" id="new_data_final" name="new_data_final" > -->
+                <input type="date" id="new_data_final" name="new_data_final" value="<?php echo htmlspecialchars($reserva->getDataFinal(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
             <div class="mb-3">
                 <label for="new_hora_inicio" class="form-label">Horario de Inicio</label>
-                <input type="time" class="form-control" id="new_hora_inicio" name="new_hora_inicio" >
+                <!-- <input type="time" class="form-control" id="new_hora_inicio" name="new_hora_inicio" > -->
+                <input type="time" id="new_hora_inicio" name="new_hora_inicio" value="<?php echo htmlspecialchars($reserva->getHoraInicio(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
             <div class="mb-3">
                 <label for="new_hora_finaliza" class="form-label">Horario Termino</label>
-                <input type="time" class="form-control" id="new_hora_finaliza" name="new_hora_finaliza" >
+                <!-- <input type="time" class="form-control" id="new_hora_finaliza" name="new_hora_finaliza" > -->
+                <input type="time" id="new_hora_finaliza" name="new_hora_finaliza" value="<?php echo htmlspecialchars($reserva->getHoraFinaliza(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
             <div class="mb-3">
                 <label for="new_curso_id" class="form-label">Id do Curso</label>
-                <input type="number" class="form-control" id="new_curso_id" name="new_curso_id" >
+                <!-- <input type="number" class="form-control" id="new_curso_id" name="new_curso_id" > -->
+                <input type="number" id="new_curso_id" name="new_curso_id" value="<?php echo htmlspecialchars($reserva->getCursoId(), ENT_QUOTES, 'UTF-8'); ?>">
+
             </div>
 
             <div class="mb-3">
                 <label for="new_sala_id" class="form-label">Id Da Sala</label>
-                <input type="number" class="form-control" id="new_sala_id" name="new_sala_id" >
+                <!-- <input type="number" class="form-control" id="new_sala_id" name="new_sala_id" > -->
+                <input type="number" id="new_sala_id" name="new_sala_id" value="<?php echo htmlspecialchars($reserva->getSalaId(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
