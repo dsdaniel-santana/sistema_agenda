@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
                 <input type="number" id="new_sala_id" name="new_sala_id" value="<?php echo htmlspecialchars($reserva->getSalaId(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
 
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            <button type="submit" class="btn btn-primary onclick="window.location.href='atualizar_reserva.php?action=salvar';">Salvar Alterações</button>
             <button type="submit" class="btn btn-primary">Editar Reserva</button>
             <button type="submit" class="btn btn-primary">Deletar Reseva</button>
             <button type="button" class="btn btn-primary" onclick="window.location.href='consultar_reserva.php?action=listar';">Listar Todas as Reservas</button>

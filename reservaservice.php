@@ -2,16 +2,16 @@
 require_once 'backend/entity/reserva.php';
 require_once 'backend/dao/reservaDAO.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
-    $date_input = $_POST['date'];
-    $date = date_create($new_date_incial);
-    if ($date = $date_input  ) {
-        echo date_format($date, "Y/m/d");
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
+//     $date_input = $_POST['date'];
+//     $date = date_create($new_date_incial);
+//     if ($date = $date_input  ) {
+//         echo date_format($date, "Y/m/d");
         
-    } else {
-        echo "Formato inválido";
-    }
-}
+//     } else {
+//         echo "Formato inválido";
+//     }
+// }
 
 
 
@@ -29,3 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
     echo $dao->create($reserva); 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>status</title>
+</head>
+<body>
+    <h1>reserva efetuada com sucesso</h1>
+    <button><a href="index.php">voltar para a pagina inicial</a></button>
+    
+</body>
+</html>
