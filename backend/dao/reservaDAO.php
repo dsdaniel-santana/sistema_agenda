@@ -35,6 +35,38 @@ class reservaDAO implements BaseDAO {
     }
   }
 
+//   public function getById($id){
+//     try{
+//         $sql = "SELECT * FROM reserva WHERE Id= :id"; 
+
+//         $stmt = $this->db->prepare($sql);
+
+//         $stmt->execute();
+
+//         $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        
+//         return array_map(function ($reserva) {
+//             return new reserva(
+//               $result['id'],
+//                        $result['data_incial'],
+//                        $result['data_final'],
+//                        $result['hora_inicio'],
+//                        $result['hora_finaliza'],
+//                        $result['curso_id'],
+//                        $result['sala_id']
+//             );
+//         }, $reservas); 
+//     } catch (PDOException $e) {
+//         return [ ];
+//     }
+// }
+
+
+
+
+
+
   public function getAll(){
     try{
         $sql = "SELECT * FROM reserva"; 
@@ -51,7 +83,7 @@ class reservaDAO implements BaseDAO {
 
         return array_map(function ($reserva) {
             return new reserva(
-                null,
+                $reserva['id'],
                 $reserva['data_incial'], 
                 $reserva['data_final'],
                 $reserva['hora_inicio'],
@@ -65,35 +97,12 @@ class reservaDAO implements BaseDAO {
     }
 }
 
-  // public function getAll(){
-  //   try {
-  //     $sql = "SELECT *FROM reserva";
-  //     $stmt = $this->db->prepare($sql);
-  //     $grupos = [];
-
-  //     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-  //           $grupos = new reserva( 
-  //             null,
-  //             $row['data_incial'],
-  //             $row['data_final'],
-  //             $row['hora_inicio'],
-  //             $row['hora_finaliza'],
-  //             $row['curso_id'],
-  //             $row['sala_id']
-  //           );
-  //     }
-
-  //     return $grupos;
-  //   }catch (PDOException $e){
-  //     return [];
-  //   }
-  // }
-
+ 
 
   public function create($reserva) {
     try {
       $sql = "INSERT INTO reserva (data_incial, data_final, hora_inicio, hora_finaliza, curso_id, sala_id) 
-      VALUES (:data_incial, :data_final, CURRENT_TIMESTAMP, :hora_inicio, :hora_finaliza, :curso_id, :sala_id)";
+      VALUES (:data_incial, :data_final, :hora_inicio, :hora_finaliza, :curso_id, :sala_id)";
       
       $stmt = $this->db->prepare($sql);
       

@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
     <div>
         <h1>Listar</h1>
         <ul>
+            <li><a href="editar_reserva.php">Editar Reserva</a></li>
             <li><a href="consultar_reserva.php?action=listar">Salas Reservadas</a></li>
             <li><a href="#">Salas Disponiveis</a></li>
             <li><a href="#">Lista Peridos</a></li>
