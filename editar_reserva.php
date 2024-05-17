@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'backend/config/database.php';
 require_once 'backend/dao/reservaDAO.php';
 require_once 'backend/entity/reserva.php';
@@ -41,7 +41,8 @@ if (isset($_GET['id'])) {
     <div class="col-md-6">
         <h2>Editar Reserva</h2>
         <form action="" method="post">
-        <input type="hidden" name="type" value="register">
+            <input type="hidden" name="reserva_id" value="<?php echo $reserva->getId(); ?>">
+            <!-- <input type="hidden" name="type" value="register"> -->
             <div class="mb-3">
                 <label for="new_data_incial">Data Inicial</label>
                 <!-- <input type="date" class="form-control" id="new_data_incial" name="new_data_incial" > -->
@@ -78,8 +79,9 @@ if (isset($_GET['id'])) {
                 <!-- <input type="number" class="form-control" id="new_sala_id" name="new_sala_id" > -->
                 <input type="number" id="new_sala_id" name="new_sala_id" value="<?php echo htmlspecialchars($reserva->getSalaId(), ENT_QUOTES, 'UTF-8'); ?>">
             </div>
+            <button type="submit" class="btn btn-primary" formaction="update_reserva.php">Salvar Alterações</button>
 
-            <button type="submit" class="btn btn-primary onclick="window.location.href='atualizar_reserva.php?action=salvar';">Salvar Alterações</button>
+            <!-- <button type="submit" class="btn btn-primary onclick="window.location.href='atualizar_reserva.php?action=salvar';">Salvar Alterações</button> -->
             <button type="submit" class="btn btn-primary">Editar Reserva</button>
             <button type="submit" class="btn btn-primary">Deletar Reseva</button>
             <button type="button" class="btn btn-primary" onclick="window.location.href='consultar_reserva.php?action=listar';">Listar Todas as Reservas</button>
@@ -87,17 +89,17 @@ if (isset($_GET['id'])) {
 
 
         </form>
-            
 
-          
 
-            
 
-        
+
+
+
+
     </div>
 
 
-    
+
 </body>
 
 </html>

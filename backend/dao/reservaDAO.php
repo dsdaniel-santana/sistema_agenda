@@ -135,32 +135,54 @@ class reservaDAO implements BaseDAO
 
   public function update($reserva) {
     try {
-        $sql = "UPDATE reserva 
-                SET DataInicial = :data_incial, DataInicial = :data_final, HoraInicio = :hora_inicio, 
-                    HoraTermina = :hora_finaliza, IdCurso = :curso_id, IdSala = :sala_id 
-                     
-                WHERE Id = :id";
-        $stmt = $this->db->prepare($sql);
-        $id = $reserva->getId();
-        $data_incial = $reserva->getDataIncial();
-        $data_final = $reserva->getDataFinal();
-        $hora_inicio = $reserva->getHoraInicio();
-        $hora_finaliza = $reserva->getHoraFinaliza();
-        $curso_id = $reserva->getCursoId();
-        $sala_id = $reserva->getSalaId();
+      $sql = "UPDATE reserva 
+        SET DataInicial = :data_incial, DataFinal = :data_final, HoraInicio = :hora_inicio, 
+            HoraTermina = :hora_finaliza, IdCurso = :curso_id, IdSala = :sala_id 
+        WHERE Id = :id";
 
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':nome', $data_incial);
-        $stmt->bindParam(':descricao', $data_final);
-        $stmt->bindParam(':dataCriacao', $hora_inicio);
-        $stmt->bindParam(':dataAtualizacao', $hora_finaliza);
-        $stmt->bindParam(':usuarioAtualizacao', $curso_id);
-        $stmt->bindParam(':ativo', $sala_id);
-
-        return $stmt->execute();
+      $stmt = $this->db->prepare($sql);
+      $id = $reserva->getId();
+      $data_incial = $reserva->getDataIncial();
+      $data_final = $reserva->getDataFinal();
+      $hora_inicio = $reserva->getHoraInicio();
+      $hora_finaliza = $reserva->getHoraFinaliza();
+      $curso_id = $reserva->getCursoId();
+      $sala_id = $reserva->getSalaId();
+  
+      $stmt->bindParam(':id', $id);
+      $stmt->bindParam(':data_incial', $data_incial);  
+      $stmt->bindParam(':data_final', $data_final);
+      $stmt->bindParam(':hora_inicio', $hora_inicio);
+      $stmt->bindParam(':hora_finaliza', $hora_finaliza);
+      $stmt->bindParam(':curso_id', $curso_id);
+      $stmt->bindParam(':sala_id', $sala_id);
+  
+      if ($stmt->execute()) {
+        return true;
+      } else {
+        // Capture error information
+        $errorInfo = $stmt->errorInfo();
+        throw new PDOException("Error updating reservation: " . $errorInfo[2]);
+      }
     } catch (PDOException $e) {
-        // Handle exception (e.g., log error)
-        return false;
+      // Handle exception (log error, display message)
+      echo "Erro ao atualizar reserva: " . $e->getMessage();
+      return false;
     }
   }
+
+  public function delete($id) {
+    try {
+        $sql = "DELETE FROM reserva WHERE Id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+  
+  
 }
