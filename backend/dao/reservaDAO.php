@@ -136,8 +136,8 @@ class reservaDAO implements BaseDAO
   public function update($reserva) {
     try {
       $sql = "UPDATE reserva 
-        SET DataInicial = :data_incial, DataFinal = :data_final, HoraInicio = :hora_inicio, 
-            HoraTermina = :hora_finaliza, IdCurso = :curso_id, IdSala = :sala_id 
+        SET data_incial = :data_incial, data_final = :data_final, hora_inicio = :hora_inicio, 
+        hora_finaliza = :hora_finaliza, curso_id = :curso_id, sala_id = :sala_id 
         WHERE Id = :id";
 
       $stmt = $this->db->prepare($sql);
@@ -173,7 +173,7 @@ class reservaDAO implements BaseDAO
 
   public function delete($id) {
     try {
-        $sql = "DELETE FROM reserva WHERE Id = :id";
+        $sql = "DELETE FROM reserva WHERE id = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

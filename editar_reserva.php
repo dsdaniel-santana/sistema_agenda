@@ -18,6 +18,17 @@ if (isset($_GET['id'])) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['acao'])) {
+        $reservaid = $_GET['id'];
+
+        if ($_POST['acao'] === 'excluir') {
+            $reservaDao->delete($reservaid);
+            header("Location: consultar_reserva.php");
+            exit;
+        }
+    }
+}
 
 ?>
 
@@ -83,7 +94,14 @@ if (isset($_GET['id'])) {
 
             <!-- <button type="submit" class="btn btn-primary onclick="window.location.href='atualizar_reserva.php?action=salvar';">Salvar Alterações</button> -->
             <button type="submit" class="btn btn-primary">Editar Reserva</button>
-            <button type="submit" class="btn btn-primary">Deletar Reseva</button>
+            
+            <form method="post">
+                <input type="hidden" name="acao" value="excluir">
+                <button type="submit">Excluir</button>
+            </form>
+            <!-- <button type="submit" class="btn btn-primary" onclick="window.location.href='delete_reserva.php';">Deletar Reseva</button> -->
+            
+            
             <button type="button" class="btn btn-primary" onclick="window.location.href='consultar_reserva.php?action=listar';">Listar Todas as Reservas</button>
 
 
