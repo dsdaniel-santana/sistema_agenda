@@ -25,6 +25,8 @@ $reservas = $reservaDao->getAll();
 
 ?>
 
+
+
 <div class="container">
     <table class="table">
         <thead>
@@ -55,3 +57,5 @@ $reservas = $reservaDao->getAll();
         </tbody>
     </table>
 </div>
+
+<button><a href="index.php">Voltar para a página inicial</a></button>

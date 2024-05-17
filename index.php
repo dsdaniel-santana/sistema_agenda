@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
             <li><a href="#">Sub-Area</a></li>
             <li><a href="#">Curso</a></li>
             <li><a href="#">Sala</a></li>
-            <li><a href="cadastrar_reserva.php">Reserva Salas</a></li>
+            <li><a href="cadastrar_reserva.php">Reservar Salas</a></li>
         </ul>
     </div>
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['date'])) {
             
             <li><a href="consultar_reserva.php?action=listar">Salas Reservadas</a></li>
             <li><a href="#">Salas Disponiveis</a></li>
-            <li><a href="#">Lista Peridos</a></li>
+            <li><a href="#">Lista Periodos</a></li>
             
         </ul>
     </div>

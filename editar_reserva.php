@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-primary" formaction="update_reserva.php">Salvar Alterações</button>
 
             <!-- <button type="submit" class="btn btn-primary onclick="window.location.href='atualizar_reserva.php?action=salvar';">Salvar Alterações</button> -->
-            <button type="submit" class="btn btn-primary">Editar Reserva</button>
+            <!-- <button type="submit" class="btn btn-primary">Editar Reserva</button> -->
             
             <form method="post">
                 <input type="hidden" name="acao" value="excluir">

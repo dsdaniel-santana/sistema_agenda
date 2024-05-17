@@ -81,9 +81,9 @@ class reservaDAO implements BaseDAO
 
       $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      echo "<pre>";
-      print_r($reservas);
-      echo "</pre>";
+      // echo "<pre>";
+      // print_r($reservas);
+      // echo "</pre>";
 
       return array_map(function ($reserva) {
         return new reserva(
